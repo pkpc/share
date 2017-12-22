@@ -9,6 +9,7 @@
     data(){
       return{
         dev0:0,
+        dev1:1,
         developData:[],
         developCreated2:[],
         lpi:{},
