@@ -8,6 +8,7 @@
 
     data(){
       return{
+        dev0:0,
         developData:[],
         developCreated2:[],
         lpi:{},
