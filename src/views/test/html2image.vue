@@ -9,7 +9,7 @@
     data(){
 
       return{
-
+        oldData:[],
         lpi:{},
 
         yes:[],
