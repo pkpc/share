@@ -10,6 +10,7 @@
 
       return{
         oldData:[],
+        masterCreated:[],
         lpi:{},
 
         yes:[],
