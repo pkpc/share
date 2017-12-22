@@ -45,10 +45,18 @@ Vue.prototype.postMsgToApp = function (obj) {
 
   }
 }
+Vue.prototype.showToast = function (value, width) {
+  this.$vux.toast.show({
+    text:value,
+    position:'bottom',
+    width:width,
+    type:'text'
+  })
+}
 
 // 获取token
 const token = getUrlParam('token')
-store.commit('updateToken', token)
+store.commit('UPDATE_TOKEN', token)
 // 设置全局携带
 // 请求拦截（配置发送请求的信息）
 axios.interceptors.request.use(function (config) {
