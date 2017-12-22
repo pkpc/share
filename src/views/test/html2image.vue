@@ -7,12 +7,9 @@
   export default {
 
     data(){
-
       return{
-        oldData:[],
-        masterCreated:[],
+        developData:[],
         lpi:{},
-
         yes:[],
         dkkk:[]
       }
