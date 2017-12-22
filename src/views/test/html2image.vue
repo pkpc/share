@@ -10,6 +10,7 @@
       return{
         dev0:0,
         dev1:1,
+        dev2:2,
         developData:[],
         developCreated2:[],
         lpi:{},
