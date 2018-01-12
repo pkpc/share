@@ -14,7 +14,7 @@
         developData:[],
         developCreated2:[],
         lpi:{},
-        yes:[],
+        yes:[ddd],
         dkkk:[sssssss]
       }
     }
