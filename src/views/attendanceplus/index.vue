@@ -15,34 +15,34 @@
             <div v-if="selectedValue===0" class="cell-share-tip">
               <p class="cell-small-sp">您当前的考勤时长已打败了</p>
               <div class="cell-z-index flex-row-center">
-                <p class="cell-max-per" :style="{color:themeColor}">100%</p><p class="cell-small-sp">的同事</p>
+                <p class="cell-max-per" :style="{color:themeColor}">{{beatPercent}}%</p><p class="cell-small-sp">的同事</p>
               </div>
             </div>
             <div v-if="selectedValue===1" class="cell-share-tip">
               <p class="cell-small-sp">您当前的考勤时长位于</p>
               <div class="cell-z-index flex-row-center">
-                <div class="cell-max-title">全公司第<span :style="{color:themeColor}">10</span>名</div>
+                <div class="cell-max-title">全公司第<span :style="{color:themeColor}">{{rank}}</span>名</div>
               </div>
             </div>
           </div>
           <!--主体的用户信息部分-->
           <div class="share-body flex-col-center">
             <div class="cell-body-header-image" :class="[workLevel===0?'king-header':'']" :style="{borderColor:themeColor,borderWidth:1+'px',borderStyle:'solid'}">
-              <img class="img-photo" src="../../assets/images/rank-0.png">
+              <img v-show="dataLoading" class="img-photo" :src="imgUrl">
             </div>
-            <p class="cell-body-name">彭于晏</p>
+            <p class="cell-body-name">{{name}}</p>
             <ul class="cell-body-info flex-col-left">
               <li class="flex-row-start">
                 <div class="cell-info-item">工作时长</div>
-                <div><span class="li-item" :style="{color:themeColor}">287</span> 小时</div>
+                <div><span class="li-item" :style="{color:themeColor}">{{workTime}}</span> 小时</div>
               </li>
               <li class="flex-row-start">
                 <div class="cell-info-item">加班次数</div>
-                <div><span class="li-item"  :style="{color:themeColor}">287</span> 次</div>
+                <div><span class="li-item"  :style="{color:themeColor}">{{overCount}}</span> 次</div>
               </li>
               <li class="flex-row-start">
                 <div class="cell-info-item">加班时长</div>
-                <div><span class="li-item"  :style="{color:themeColor}">287</span> 小时</div>
+                <div><span class="li-item"  :style="{color:themeColor}">{{overTime}}</span> 小时</div>
               </li>
             </ul>
           </div>
@@ -51,10 +51,6 @@
             <div class="flex-row-between">
               <div class="flex-col-left">
                 <img class="img-min-logo" src="../../assets/images/icon-share-min-logo.png">
-                <!--<img class="img-logo" src="../../assets/images/icon-logo.png">-->
-                <!--<div class="cell-footer-di">-->
-                  <!--<span class="cell-footer-sp">手机上最好用的企业智能化管理系统</span>-->
-                <!--</div>-->
               </div>
               <img class="img-code" src="../../assets/images/icon-code.png">
             </div>
@@ -82,13 +78,13 @@
           <div v-if="selectedValue===0" class="cell-share-tip">
             <p class="cell-small-sp">您当前的考勤时长已打败了</p>
             <div class="cell-z-index flex-row-center">
-              <p class="cell-max-per" :style="{color:themeColor}">100%</p><p class="cell-small-sp">的同事</p>
+              <p class="cell-max-per" :style="{color:themeColor}">{{beatPercent}}%</p><p class="cell-small-sp">的同事</p>
             </div>
           </div>
           <div v-if="selectedValue===1" class="cell-share-tip">
             <p class="cell-small-sp">您当前的考勤时长位于</p>
             <div class="cell-z-index flex-row-center">
-              <div class="cell-max-title">全公司第<span :style="{color:themeColor}">10</span>名</div>
+              <div class="cell-max-title">全公司第<span :style="{color:themeColor}">{{rank}}</span>名</div>
             </div>
           </div>
         </div>
@@ -96,21 +92,21 @@
         <div class="share-body flex-col-center">
           <div class="cell-body-header-image" :class="[workLevel===0?'king-header':'']" :style="{borderColor:themeColor,borderWidth:2+'px',borderStyle:'solid'}">
           <!--<div class="cell-body-header-image flex-row-center" :class="[workLevel===0?'king-header':'','img-circle-'+workLevel]">-->
-            <img class="img-photo" src="../../assets/images/rank-0.png">
+            <img class="img-photo" :src="imgUrl">
           </div>
-          <p class="cell-body-name">彭于晏</p>
+          <p class="cell-body-name">{{name}}</p>
           <ul class="cell-body-info flex-col-left">
             <li class="flex-row-start">
               <div class="cell-info-item">工作时长</div>
-              <div class="item-width"><span class="li-item" :style="{color:themeColor}">287</span> 小时</div>
+              <div class="item-width"><span class="li-item" :style="{color:themeColor}">{{workTime}}</span> 小时</div>
             </li>
             <li class="flex-row-start">
               <div class="cell-info-item">加班次数</div>
-              <div class="item-width"><span class="li-item"  :style="{color:themeColor}">287</span> 次</div>
+              <div class="item-width"><span class="li-item"  :style="{color:themeColor}">{{overCount}}</span> 次</div>
             </li>
             <li class="flex-row-start">
               <div class="cell-info-item">加班时长</div>
-              <div class="item-width"><span class="li-item"  :style="{color:themeColor}">287</span> 小时</div>
+              <div class="item-width"><span class="li-item"  :style="{color:themeColor}">{{overTime}}</span> 小时</div>
             </li>
           </ul>
         </div>
@@ -121,11 +117,6 @@
         <div class="flex-row-between">
           <div class="flex-col-left">
             <img class="img-max-logo" src="../../assets/images/icon-share-max-logo.png">
-            <!--<img class="img-logo" src="../../assets/images/icon-max-logo.png">-->
-            <!--&lt;!&ndash;<div class="cell-footer-sp">手机上最好用的企业智能化管理系统</div>&ndash;&gt;-->
-            <!--<div class="cell-footer-di">-->
-              <!--<span class="cell-footer-sp">手机上最好用的企业智能化管理系统</span>-->
-            <!--</div>-->
           </div>
           <img class="img-code" src="../../assets/images/icon-max-code.png">
         </div>
@@ -137,10 +128,11 @@
 </template>
 <script>
   import Vue from 'vue'
-  import domtoimage from 'dom-to-image';
+  import axios from 'axios'
   import PShare from '../../components/p-share/index.vue'
   import TransferDom from '../../directives/transfer-dom/index'
   import VueScroller from '../../components/vue-scroller/index'
+  import api from '../../vuex/api'
   Vue.use(VueScroller)
   export default {
     components:{
@@ -151,16 +143,51 @@
     },
     data(){
       return{
+        dataLoading:false,
+        imgUrl:'',
+        name:'',
+        beatPercent: 9,    // 打败人数百分比
+        overCount: 0,        // 加班次数
+        overTime: 0,        // 加班时长
+        rank: 103,        // 工作时长排名
+        workTime: 0,        // 工作时长
         shareDirection:0,           //分享方向，0:微信，1：朋友圈，2：QQ :3：微博
         selectedValue:0,            //0为选择百分比，1为排名
-        workLevel:0,                //目前分为4个等级，0为最高等级
+        workLevel:4,                //目前分为4个等级，0为最高等级
         themeColor:'',              //主体颜色，
         shareType:0,                //0为选择百分比和排名，1为分享到微信页
       }
     },
     created(){
-      this.workLevel = 0;
-      this.setTheme();
+      let self = this;
+      axios.all([api.getShareData(), api.fetchProfile()])
+        .then(axios.spread((shareRes, profileRes) =>{
+            if(shareRes.data.respCode === '000'){
+              console.log(shareRes.data.item)
+              self.beatPercent = shareRes.data.item.beatPercent;
+              self.overCount = shareRes.data.item.overCount;
+              self.overTime = shareRes.data.item.overTime;
+              self.rank = shareRes.data.item.rank;
+              self.workTime = shareRes.data.item.workTime;
+            }
+            console.log(profileRes)
+            self.name = profileRes.data.name;
+            self.imgUrl = 'https://www.erplus.co/uploads/avatars'+profileRes.data.imageName;
+            self.dataLoading = true;
+
+            //根据百分比排名判断工作等级
+            if(self.beatPercent >=96 && self.beatPercent <=100){
+              self.workLevel = 0;
+            }else if(self.beatPercent >=86 && self.beatPercent <=95){
+              self.workLevel = 1;
+            }else if(self.beatPercent >=70 && self.beatPercent <=85){
+              self.workLevel = 2;
+            }else {
+              self.workLevel = 3;
+            }
+            //设置主题颜色
+            self.setTheme();
+          }));
     },
     methods:{
       setTheme(){
